@@ -38,6 +38,9 @@ dependencies:
   flutter_markdown: ^0.6.14
   path_provider: ^2.0.15
   url_launcher: ^6.1.11
+  flutter_highlighter: ^0.1.1
+  google_fonts: ^6.1.0
+  markdown: ^7.1.1
 
 dev_dependencies:
   flutter_test:
@@ -64,17 +67,23 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/about/
-    - assets/blogs/
-    - assets/blogs/portfolio-blog/
-    - assets/blogs/portfolio-blog/images/
-    - assets/blogs/dart_CRUD/
-    - assets/blogs/dart_CRUD/images/
-    - assets/projects/
-    - assets/projects/portfolio-project/
-    - assets/projects/portfolio-project/images/
-    - assets/projects/dart_CRUD/
-    - assets/projects/dart_CRUD/images/
+    - assets/posts/
+    - assets/posts/portfolio_blog/
+    - assets/posts/portfolio_blog/images/
+    - assets/posts/dart_CRUD/
+    - assets/posts/dart_CRUD/images/
+    - assets/posts/flutter_state/
+    - assets/posts/flutter_state/images/
+    - assets/posts/simple_weather_app/
+    - assets/posts/simple_weather_app/images/
+    - assets/posts/flutter_async/
+    - assets/posts/flutter_async/images/
+    - assets/posts/flutter_provider/
+    - assets/posts/flutter_provider/images/
+    - assets/posts/simple_movie_app/
+    - assets/posts/simple_movie_app/images/
+    - assets/posts/simple_market_app/
+    - assets/posts/simple_market_app/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

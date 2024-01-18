@@ -3,6 +3,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:portfolio_blog/components/custom_bottom_navigationbar.dart';
 import 'package:portfolio_blog/components/custom_drawer.dart';
 import 'package:portfolio_blog/components/custom_text.dart';
+import 'package:portfolio_blog/components/default_contents_box.dart';
 import '../components/top_navigationbar.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter/services.dart';
@@ -16,6 +17,9 @@ class AboutPage extends StatelessWidget {
     return await rootBundle.loadString(path);
   }
 
+  String description =
+      "Hello there! I'm Blackcode2, a Computer Science and Engineering major pursuing my Bachelor's degree. Welcome to my blog, where I showcase creative and passion-driven projects and document my journey towards becoming a proficient developer. Feel free to explore my projects and experiences, and I hope you enjoy the content!\n\n As a junior developer, my primary focus is on Flutter, and interestingly, this blog is also built using Flutter. Along my learning journey, I've delved into programming languages like C, C++, Python, and Java. Additionally, I have a modest grasp of HTML, CSS, and Javascript. I'm currently exploring various paths, from web development to game development, AI, and more, to discover which area resonates best with me.\n\n One thing I'm certain about is my dream and goal of starting my own business in the future. This aspiration fuels my determination to learn and grow as a developer, making steady progress towards achieving my ambitions. Thank you for visiting my blog, and I hope you find inspiration and enjoyment in exploring my projects and experiences.";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,52 +29,28 @@ class AboutPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  left: ResponsiveValue(context,
-                      defaultValue: 82.0,
-                      conditionalValues: [
-                        const Condition.smallerThan(
-                            name: 'DESKTOP3', value: 40.0)
-                      ]).value!,
-                  right: ResponsiveValue(context,
-                      defaultValue: 82.0,
-                      conditionalValues: [
-                        const Condition.smallerThan(
-                            name: 'DESKTOP3', value: 40.0)
-                      ]).value!),
+            TopNavigationbar(
+              scaffoldKey: scaffoldKey,
+            ),
+            DefaultContentsBox(
               child: Column(
                 children: [
-                  TopNavigationbar(
-                    scaffoldKey: scaffoldKey,
-                  ),
+                  // padiing between top navigation bar and title
                   Padding(
                     padding: EdgeInsets.fromLTRB(
-                        ResponsiveValue(context,
-                            defaultValue: 200.0,
-                            conditionalValues: [
-                              const Condition.smallerThan(
-                                  name: 'DESKTOP3', value: 100.0),
-                              const Condition.equals(name: TABLET, value: 20.0),
-                              const Condition.equals(name: MOBILE, value: 10.0),
-                            ]).value!,
+                        0,
                         ResponsiveValue(context,
                             defaultValue: 80.0,
                             conditionalValues: [
                               const Condition.smallerThan(
                                   name: 'DESKTOP3', value: 30.0)
                             ]).value!,
-                        ResponsiveValue(context,
-                            defaultValue: 200.0,
-                            conditionalValues: [
-                              const Condition.smallerThan(
-                                  name: 'DESKTOP3', value: 100.0),
-                              const Condition.equals(name: TABLET, value: 20.0),
-                              const Condition.equals(name: MOBILE, value: 10.0),
-                            ]).value!,
+                        0,
                         100),
                     child: Column(
                       children: [
+                        // padding between title and picture
+                        // this is wrapper for title
                         Padding(
                           padding: const EdgeInsets.only(bottom: 50),
                           child: SizedBox(
@@ -83,7 +63,7 @@ class AboutPage extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                HeadlineLargeText(text: "About"),
+                                HeadTilteText(text: "About"),
                                 const SizedBox(
                                   height: 38,
                                 ),
@@ -96,30 +76,13 @@ class AboutPage extends StatelessWidget {
                           width: 300,
                           child: Image.asset("assets/images/profile-image.png"),
                         ),
-                        FutureBuilder(
-                            future:
-                                rootBundle.loadString("assets/about/about.md"),
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.waiting) {
-                                return const Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              } else if (snapshot.hasData) {
-                                return Markdown(
-                                    shrinkWrap: true,
-                                    data: snapshot.data!.toString(),
-                                    styleSheet:
-                                        MarkdownStyleSheet.fromTheme(ThemeData(
-                                            textTheme: const TextTheme(
-                                                bodyMedium: TextStyle(
-                                      fontSize: 20.0,
-                                    )))));
-                              }
-                              return const Center(
-                                child: Text("can not load the page"),
-                              );
-                            }),
+                        SizedBox(
+                          width: 800.0,
+                          child: BodySmallText(
+                            text: description,
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
                       ],
                     ),
                   ),

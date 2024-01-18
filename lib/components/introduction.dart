@@ -13,23 +13,28 @@ class Introduction extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 120, 0, 110),
       child: ResponsiveRowColumn(
-        layout: ResponsiveBreakpoints.of(context).smallerThan('DESKTOP3')
+        layout: ResponsiveBreakpoints.of(context).smallerThan(TABLET)
             ? ResponsiveRowColumnType.COLUMN
             : ResponsiveRowColumnType.ROW,
         rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          // Box for introduction texts
           ResponsiveRowColumnItem(
             rowFlex: 1,
             child: SizedBox(
               width: ResponsiveValue(context,
-                  defaultValue: 520.0,
+                  defaultValue: 450.0,
                   conditionalValues: [
-                    const Condition.smallerThan(name: DESKTOP, value: 450.0),
-                    const Condition.smallerThan(name: 'DESKTOP2', value: 400.0),
-                    const Condition.smallerThan(name: 'DESKTOP3', value: 450.0),
-                    const Condition.smallerThan(name: TABLET, value: 300.0)
+                    const Condition.equals(name: TABLET, value: 370.0),
+                    Condition.equals(
+                        name: 'TABLET2',
+                        value: MediaQuery.of(context).size.width),
+                    Condition.equals(
+                        name: MOBILE, value: MediaQuery.of(context).size.width),
                   ]).value,
-              height: 400,
+              height: ResponsiveBreakpoints.of(context).smallerThan(TABLET)
+                  ? 228
+                  : 400,
               child: ResponsiveRowColumn(
                 layout: ResponsiveRowColumnType.COLUMN,
                 columnCrossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +44,7 @@ class Introduction extends StatelessWidget {
                     columnFlex: 1,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 20),
-                      child: HeadlineLargeText(
+                      child: HeadTilteText(
                         text: 'Hi there, I am Blackcode2',
                       ),
                     ),
@@ -68,32 +73,27 @@ class Introduction extends StatelessWidget {
               ),
             ),
           ),
+          // profile image
           ResponsiveRowColumnItem(
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(30.0),
                 child: Container(
-                  color: const Color.fromARGB(255, 206, 202, 255),
+                  color: const Color.fromARGB(255, 167, 202, 223),
                   height: ResponsiveValue(context,
-                      defaultValue: 510.0,
+                      defaultValue: 520.0,
                       conditionalValues: [
-                        const Condition.smallerThan(
-                            name: DESKTOP, value: 440.0),
-                        const Condition.smallerThan(
-                            name: 'DESKTOP2', value: 360.0),
-                        const Condition.smallerThan(
-                            name: 'DESKTOP3', value: 300.0),
-                        const Condition.smallerThan(name: TABLET, value: 250.0)
-                      ]).value, //510
+                        const Condition.equals(name: 'DESKTOP3', value: 420.0),
+                        const Condition.equals(name: TABLET, value: 360.0),
+                        const Condition.equals(name: "TABLET2", value: 380.0),
+                        const Condition.equals(name: MOBILE, value: 280.0)
+                      ]).value,
                   width: ResponsiveValue(context,
-                      defaultValue: 500.0,
+                      defaultValue: 480.0,
                       conditionalValues: [
-                        const Condition.smallerThan(
-                            name: DESKTOP, value: 430.0),
-                        const Condition.smallerThan(
-                            name: 'DESKTOP2', value: 350.0),
-                        const Condition.smallerThan(
-                            name: 'DESKTOP3', value: 450.0),
-                        const Condition.smallerThan(name: TABLET, value: 300.0)
+                        const Condition.equals(name: 'DESKTOP3', value: 400.0),
+                        const Condition.equals(name: TABLET, value: 340.0),
+                        const Condition.equals(name: "TABLET2", value: 540.0),
+                        const Condition.equals(name: MOBILE, value: 440.0)
                       ]).value,
                   child: Image.asset(
                     'assets/images/profile-image.png',
@@ -120,9 +120,8 @@ class IntroWork extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Latest works",
-                  style: Theme.of(context).textTheme.bodyLarge,
+                HeadTilteText(
+                  text: "Latest works",
                 ),
                 TextButton(
                     onPressed: () {
@@ -190,9 +189,8 @@ class IntroBlog extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Recent Posts",
-                  style: Theme.of(context).textTheme.bodyLarge,
+                HeadTilteText(
+                  text: "Recent Posts",
                 ),
                 TextButton(
                     onPressed: () {

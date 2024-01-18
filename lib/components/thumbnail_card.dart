@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:portfolio_blog/pages/blog_post_page.dart';
+import 'package:portfolio_blog/components/content.dart';
+import 'package:portfolio_blog/pages/post.dart';
 import 'dart:convert';
-
-import 'package:portfolio_blog/pages/project_post_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class ProjectCard extends StatelessWidget {
@@ -17,7 +16,7 @@ class ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future:
-          rootBundle.loadString("assets/projects/${dataList[0]}/metadata.json"),
+          rootBundle.loadString("assets/posts/${dataList[0]}/metadata.json"),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Card(
@@ -37,9 +36,9 @@ class ProjectCard extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ProjectPostPage(
+                        builder: (context) => Post(
                               fileRoot:
-                                  "assets/projects/${dataList[0]}/${dataList[1]}",
+                                  "assets/posts/${dataList[0]}/${dataList[1]}",
                               metaData: jsonData,
                             )));
               },
@@ -61,7 +60,7 @@ class ProjectCard extends StatelessWidget {
                     // ),
                     image: DecorationImage(
                         image: AssetImage(
-                            "assets/projects/${dataList[0]}/images/${jsonData["image"]}"),
+                            "assets/posts/${dataList[0]}/images/${jsonData["image"]}"),
                         fit: BoxFit.cover,
                         alignment: Alignment.topCenter),
                   ),
@@ -139,7 +138,7 @@ class BlogCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future:
-          rootBundle.loadString("assets/blogs/${dataList[0]}/metadata.json"),
+          rootBundle.loadString("assets/posts/${dataList[0]}/metadata.json"),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Card(
@@ -159,9 +158,9 @@ class BlogCard extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => BlogPostPage(
+                        builder: (context) => Post(
                               fileRoot:
-                                  "assets/blogs/${dataList[0]}/${dataList[1]}",
+                                  "assets/posts/${dataList[0]}/${dataList[1]}",
                               metaData: jsonData,
                             )));
               },
@@ -176,9 +175,9 @@ class BlogCard extends StatelessWidget {
                           topLeft: Radius.circular(14),
                           topRight: Radius.circular(14)),
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.4,
+                        height: MediaQuery.of(context).size.height * 0.3,
                         child: Image.asset(
-                          "assets/blogs/${dataList[0]}/images/${jsonData["image"]}",
+                          "assets/posts/${dataList[0]}/images/${jsonData["image"]}",
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -195,7 +194,7 @@ class BlogCard extends StatelessWidget {
                                 bottomRight: Radius.circular(14))),
                         child: Padding(
                           padding:
-                              const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 18.0),
+                              const EdgeInsets.fromLTRB(24.0, 60.0, 24.0, 18.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_blog/components/default_contents_box.dart';
 import 'package:portfolio_blog/pages/about_page.dart';
 import 'package:portfolio_blog/pages/blog_page.dart';
 import 'package:portfolio_blog/pages/home_page.dart';
+import 'package:portfolio_blog/pages/post.dart';
 import 'package:portfolio_blog/pages/projects_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,97 +16,108 @@ class TopNavigationbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-        0,
-        ResponsiveValue(context, defaultValue: 48.0, conditionalValues: [
-          const Condition.smallerThan(name: 'DESKTOP3', value: 20.0)
-        ]).value!,
-        0,
-        ResponsiveValue(context, defaultValue: 48.0, conditionalValues: [
-          const Condition.smallerThan(name: 'DESKTOP3', value: 20.0)
-        ]).value!,
-      ),
-      child: ResponsiveRowColumn(
-        rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
-        layout: ResponsiveRowColumnType.ROW,
-        children: [
-          const ResponsiveRowColumnItem(child: MainLogo()),
-          const ResponsiveRowColumnItem(
-            child: SizedBox(
-              width: 70,
-            ),
-          ),
-          ResponsiveRowColumnItem(
-            child: NavigationbarButton(
-              label: 'Home',
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePage()));
-              },
-            ),
-          ),
-          ResponsiveRowColumnItem(
-            child: NavigationbarButton(
-              label: 'Projects',
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ProjectsPage()));
-              },
-            ),
-          ),
-          ResponsiveRowColumnItem(
-            child: NavigationbarButton(
-              label: 'Blog',
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BlogPage()));
-              },
-            ),
-          ),
-          ResponsiveRowColumnItem(
-            child: NavigationbarButton(
-              label: 'About',
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AboutPage()));
-              },
-            ),
-          ),
-          const ResponsiveRowColumnItem(
-            child: Expanded(
-              child: SizedBox(),
-            ),
-          ),
-          ResponsiveRowColumnItem(
-            child: ResponsiveVisibility(
-              hiddenConditions: const [Condition.smallerThan(name: 'DESKTOP2')],
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                    onTap: () async {
-                      await launchUrl(_url);
-                    },
-                    child: const ImageIcon(
-                      AssetImage('assets/images/github-mark.png'),
-                    )),
+    return DefaultContentsBox(
+      // padding for the top
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: ResponsiveValue(context,
+              defaultValue: 52.0,
+              conditionalValues: [
+                const Condition.smallerThan(name: 'DESKTOP3', value: 20.0)
+              ]).value!,
+        ),
+        child: ResponsiveRowColumn(
+          rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
+          layout: ResponsiveRowColumnType.ROW,
+          children: [
+            const ResponsiveRowColumnItem(child: MainLogo()),
+            const ResponsiveRowColumnItem(
+              child: SizedBox(
+                width: 70,
               ),
             ),
-          ),
-          ResponsiveRowColumnItem(
-            child: ResponsiveVisibility(
-              visible: false,
-              visibleConditions: const [
-                Condition.smallerThan(name: 'DESKTOP2')
-              ],
-              child: EndDrawerButton(
+            ResponsiveRowColumnItem(
+              child: NavigationbarButton(
+                label: 'Home',
                 onPressed: () {
-                  scaffoldKey.currentState!.openEndDrawer();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
                 },
               ),
             ),
-          ),
-        ],
+            ResponsiveRowColumnItem(
+              child: NavigationbarButton(
+                label: 'Projects',
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProjectsPage()));
+                },
+              ),
+            ),
+            ResponsiveRowColumnItem(
+              child: NavigationbarButton(
+                label: 'Blog',
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BlogPage()));
+                },
+              ),
+            ),
+            ResponsiveRowColumnItem(
+              child: NavigationbarButton(
+                label: 'About',
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AboutPage()));
+                },
+              ),
+            ),
+            // ResponsiveRowColumnItem(
+            //   child: NavigationbarButton(
+            //     label: 'Test',
+            //     onPressed: () {
+            //       Navigator.push(
+            //           context, MaterialPageRoute(builder: (context) => Post()));
+            //     },
+            //   ),
+            // ),
+            const ResponsiveRowColumnItem(
+              child: Expanded(
+                child: SizedBox(),
+              ),
+            ),
+            ResponsiveRowColumnItem(
+              child: ResponsiveVisibility(
+                hiddenConditions: const [
+                  Condition.smallerThan(name: 'DESKTOP2')
+                ],
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                      onTap: () async {
+                        await launchUrl(_url);
+                      },
+                      child: const ImageIcon(
+                        AssetImage('assets/images/github-mark.png'),
+                      )),
+                ),
+              ),
+            ),
+            ResponsiveRowColumnItem(
+              child: ResponsiveVisibility(
+                visible: false,
+                visibleConditions: const [
+                  Condition.smallerThan(name: 'DESKTOP2')
+                ],
+                child: EndDrawerButton(
+                  onPressed: () {
+                    scaffoldKey.currentState!.openEndDrawer();
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -152,7 +165,11 @@ class NavigationbarButton extends StatelessWidget {
             },
             child: Text(
               label,
-              style: Theme.of(context).textTheme.labelMedium,
+              style: const TextStyle(
+                  fontFamily: "Inter",
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Color.fromARGB(255, 17, 14, 56)),
             )),
       ),
     );

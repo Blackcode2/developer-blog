@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_blog/components/custom_bottom_navigationbar.dart';
 import 'package:portfolio_blog/components/custom_drawer.dart';
 import 'package:portfolio_blog/components/custom_text.dart';
+import 'package:portfolio_blog/components/default_contents_box.dart';
 import '../components/top_navigationbar.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter/services.dart';
@@ -31,25 +32,13 @@ class ProjectsPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  left: ResponsiveValue(context,
-                      defaultValue: 82.0,
-                      conditionalValues: [
-                        const Condition.smallerThan(
-                            name: 'DESKTOP3', value: 40.0)
-                      ]).value!,
-                  right: ResponsiveValue(context,
-                      defaultValue: 82.0,
-                      conditionalValues: [
-                        const Condition.smallerThan(
-                            name: 'DESKTOP3', value: 40.0)
-                      ]).value!),
+            TopNavigationbar(
+              scaffoldKey: scaffoldKey,
+            ),
+            DefaultContentsBox(
               child: Column(
                 children: [
-                  TopNavigationbar(
-                    scaffoldKey: scaffoldKey,
-                  ),
+                  // padiing between top navigation bar and title
                   Padding(
                     padding: EdgeInsets.fromLTRB(
                         0,
@@ -63,6 +52,8 @@ class ProjectsPage extends StatelessWidget {
                         100),
                     child: Column(
                       children: [
+                        // padding between title&description and ProjectCard
+                        // this is wrapper for title & description
                         Padding(
                           padding: const EdgeInsets.only(bottom: 50),
                           child: SizedBox(
@@ -75,7 +66,7 @@ class ProjectsPage extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                HeadlineLargeText(text: header),
+                                HeadTilteText(text: header),
                                 const SizedBox(
                                   height: 38,
                                 ),
@@ -115,7 +106,7 @@ class ProjectCardGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: rootBundle.loadString('assets/projects/projects_list.json'),
+      future: rootBundle.loadString('assets/posts/projects_list.json'),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(

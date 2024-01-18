@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_blog/components/custom_drawer.dart';
 import 'package:portfolio_blog/components/introduction.dart';
+import 'package:portfolio_blog/components/default_contents_box.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import '../components/top_navigationbar.dart';
 import '../components/custom_bottom_navigationbar.dart';
@@ -17,35 +18,20 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  left: ResponsiveValue(context,
-                      defaultValue: 82.0,
-                      conditionalValues: [
-                        const Condition.smallerThan(
-                            name: 'DESKTOP3', value: 40.0)
-                      ]).value!,
-                  right: ResponsiveValue(context,
-                      defaultValue: 82.0,
-                      conditionalValues: [
-                        const Condition.smallerThan(
-                            name: 'DESKTOP3', value: 40.0)
-                      ]).value!),
-              child: ResponsiveRowColumn(
+            TopNavigationbar(
+              scaffoldKey: scaffoldKey,
+            ),
+            DefaultContentsBox(
+              child: const ResponsiveRowColumn(
                 layout: ResponsiveRowColumnType.COLUMN,
                 children: [
+                  ResponsiveRowColumnItem(child: Introduction()),
                   ResponsiveRowColumnItem(
-                      rowFlex: 1,
-                      child: TopNavigationbar(
-                        scaffoldKey: scaffoldKey,
-                      )),
-                  const ResponsiveRowColumnItem(child: Introduction()),
-                  const ResponsiveRowColumnItem(
                       child: Padding(
                     padding: EdgeInsets.only(top: 80),
                     child: IntroWork(),
                   )),
-                  const ResponsiveRowColumnItem(
+                  ResponsiveRowColumnItem(
                       child: Padding(
                     padding: EdgeInsets.only(top: 180),
                     child: IntroBlog(),

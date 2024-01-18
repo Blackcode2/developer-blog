@@ -19,9 +19,8 @@ class CustomDrawer extends StatelessWidget {
               child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Menu',
-                style: Theme.of(context).textTheme.headlineSmall,
+              DrawerText(
+                text: 'Menu',
               ),
               IconButton(
                   onPressed: () {
@@ -31,9 +30,8 @@ class CustomDrawer extends StatelessWidget {
             ],
           )),
           ListTile(
-            title: Text(
-              'Home',
-              style: Theme.of(context).textTheme.labelMedium,
+            title: DrawerText(
+              text: 'Home',
             ),
             onTap: () {
               Navigator.push(
@@ -41,9 +39,8 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text(
-              'Projects',
-              style: Theme.of(context).textTheme.labelMedium,
+            title: DrawerText(
+              text: 'Projects',
             ),
             onTap: () {
               Navigator.push(context,
@@ -51,9 +48,8 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text(
-              'Blog',
-              style: Theme.of(context).textTheme.labelMedium,
+            title: DrawerText(
+              text: 'Blog',
             ),
             onTap: () {
               Navigator.push(
@@ -61,9 +57,8 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text(
-              'About',
-              style: Theme.of(context).textTheme.labelMedium,
+            title: DrawerText(
+              text: 'About',
             ),
             onTap: () {
               Navigator.push(context,
@@ -71,9 +66,8 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            title: Text(
-              'Github',
-              style: Theme.of(context).textTheme.labelMedium,
+            title: DrawerText(
+              text: 'Github',
             ),
             onTap: () async {
               await launchUrl(_url);
@@ -81,6 +75,24 @@ class CustomDrawer extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class DrawerText extends StatelessWidget {
+  DrawerText({required this.text, super.key});
+
+  late String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: const TextStyle(
+          fontFamily: "Inter",
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Color.fromARGB(255, 17, 14, 56)),
     );
   }
 }
