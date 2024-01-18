@@ -16,108 +16,123 @@ class TopNavigationbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultContentsBox(
-      // padding for the top
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: ResponsiveValue(context,
-              defaultValue: 52.0,
-              conditionalValues: [
-                const Condition.smallerThan(name: 'DESKTOP3', value: 20.0)
-              ]).value!,
-        ),
-        child: ResponsiveRowColumn(
-          rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
-          layout: ResponsiveRowColumnType.ROW,
-          children: [
-            const ResponsiveRowColumnItem(child: MainLogo()),
-            const ResponsiveRowColumnItem(
-              child: SizedBox(
-                width: 70,
+    if (ResponsiveBreakpoints.of(context).largerThan("PHONE")) {
+      return DefaultContentsBox(
+          // padding for the top
+          child: MenuList(
+        scaffoldKey: scaffoldKey,
+      ));
+    } else {
+      return MenuList(scaffoldKey: scaffoldKey);
+    }
+  }
+}
+
+class MenuList extends StatelessWidget {
+  MenuList({required this.scaffoldKey, super.key});
+
+  late GlobalKey<ScaffoldState> scaffoldKey;
+  final Uri _url = Uri.parse('https://github.com/Blackcode2');
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: ResponsiveValue(context,
+            defaultValue: 52.0,
+            conditionalValues: [
+              const Condition.smallerThan(name: 'DESKTOP3', value: 20.0)
+            ]).value!,
+      ),
+      child: ResponsiveRowColumn(
+        rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
+        layout: ResponsiveRowColumnType.ROW,
+        children: [
+          const ResponsiveRowColumnItem(child: MainLogo()),
+          const ResponsiveRowColumnItem(
+            child: SizedBox(
+              width: 70,
+            ),
+          ),
+          ResponsiveRowColumnItem(
+            child: NavigationbarButton(
+              label: 'Home',
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
+              },
+            ),
+          ),
+          ResponsiveRowColumnItem(
+            child: NavigationbarButton(
+              label: 'Projects',
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProjectsPage()));
+              },
+            ),
+          ),
+          ResponsiveRowColumnItem(
+            child: NavigationbarButton(
+              label: 'Blog',
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => BlogPage()));
+              },
+            ),
+          ),
+          ResponsiveRowColumnItem(
+            child: NavigationbarButton(
+              label: 'About',
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AboutPage()));
+              },
+            ),
+          ),
+          // ResponsiveRowColumnItem(
+          //   child: NavigationbarButton(
+          //     label: 'Test',
+          //     onPressed: () {
+          //       Navigator.push(
+          //           context, MaterialPageRoute(builder: (context) => Post()));
+          //     },
+          //   ),
+          // ),
+          const ResponsiveRowColumnItem(
+            child: Expanded(
+              child: SizedBox(),
+            ),
+          ),
+          ResponsiveRowColumnItem(
+            child: ResponsiveVisibility(
+              hiddenConditions: const [Condition.smallerThan(name: 'DESKTOP2')],
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                    onTap: () async {
+                      await launchUrl(_url);
+                    },
+                    child: const ImageIcon(
+                      AssetImage('assets/images/github-mark.png'),
+                    )),
               ),
             ),
-            ResponsiveRowColumnItem(
-              child: NavigationbarButton(
-                label: 'Home',
+          ),
+          ResponsiveRowColumnItem(
+            child: ResponsiveVisibility(
+              visible: false,
+              visibleConditions: const [
+                Condition.smallerThan(name: 'DESKTOP2')
+              ],
+              child: EndDrawerButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                  scaffoldKey.currentState!.openEndDrawer();
                 },
               ),
             ),
-            ResponsiveRowColumnItem(
-              child: NavigationbarButton(
-                label: 'Projects',
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProjectsPage()));
-                },
-              ),
-            ),
-            ResponsiveRowColumnItem(
-              child: NavigationbarButton(
-                label: 'Blog',
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BlogPage()));
-                },
-              ),
-            ),
-            ResponsiveRowColumnItem(
-              child: NavigationbarButton(
-                label: 'About',
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AboutPage()));
-                },
-              ),
-            ),
-            // ResponsiveRowColumnItem(
-            //   child: NavigationbarButton(
-            //     label: 'Test',
-            //     onPressed: () {
-            //       Navigator.push(
-            //           context, MaterialPageRoute(builder: (context) => Post()));
-            //     },
-            //   ),
-            // ),
-            const ResponsiveRowColumnItem(
-              child: Expanded(
-                child: SizedBox(),
-              ),
-            ),
-            ResponsiveRowColumnItem(
-              child: ResponsiveVisibility(
-                hiddenConditions: const [
-                  Condition.smallerThan(name: 'DESKTOP2')
-                ],
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                      onTap: () async {
-                        await launchUrl(_url);
-                      },
-                      child: const ImageIcon(
-                        AssetImage('assets/images/github-mark.png'),
-                      )),
-                ),
-              ),
-            ),
-            ResponsiveRowColumnItem(
-              child: ResponsiveVisibility(
-                visible: false,
-                visibleConditions: const [
-                  Condition.smallerThan(name: 'DESKTOP2')
-                ],
-                child: EndDrawerButton(
-                  onPressed: () {
-                    scaffoldKey.currentState!.openEndDrawer();
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

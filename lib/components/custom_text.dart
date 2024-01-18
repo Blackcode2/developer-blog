@@ -16,6 +16,7 @@ class HeadTilteText extends StatelessWidget {
             const Condition.equals(name: 'DESKTOP3', value: 46.0),
             const Condition.smallerThan(name: 'DESKTOP3', value: 36.0),
             const Condition.equals(name: MOBILE, value: 32.0),
+            const Condition.equals(name: "PHONE", value: 26.0),
           ]).value,
           fontWeight: FontWeight.w900,
           color: const Color.fromARGB(255, 17, 14, 56)),

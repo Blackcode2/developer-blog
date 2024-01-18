@@ -97,33 +97,41 @@ class Post extends StatelessWidget {
                                   'code': CodeElementBuilder(),
                                 },
                                 styleSheet: MarkdownStyleSheet(
-                                    p: const TextStyle(
-                                        color: Color.fromARGB(255, 17, 14, 56),
-                                        fontSize: 18.0,
+                                    p: TextStyle(
+                                        color: const Color.fromARGB(
+                                            255, 17, 14, 56),
+                                        fontSize: ResponsiveValue(context,
+                                            defaultValue: 18.0,
+                                            conditionalValues: [
+                                              const Condition.equals(
+                                                  name: "PHONE", value: 14.0)
+                                            ]).value,
                                         fontFamily: "Inter"),
-                                    a: const TextStyle(fontSize: 18),
-                                    h1: const TextStyle(
-                                        color: Color.fromARGB(255, 17, 14, 56),
-                                        fontSize: 34.0,
+                                    a: TextStyle(
+                                      fontSize: ResponsiveValue(context,
+                                          defaultValue: 18.0,
+                                          conditionalValues: [
+                                            const Condition.equals(
+                                                name: "PHONE", value: 14.0)
+                                          ]).value,
+                                    ),
+                                    h1: TextStyle(
+                                        color: const Color.fromARGB(
+                                            255, 17, 14, 56),
+                                        fontSize: ResponsiveValue(context,
+                                                defaultValue: 34.0,
+                                                conditionalValues: [const Condition.equals(name: "PHONE", value: 26.0)])
+                                            .value,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Inter"),
-                                    h2: const TextStyle(
-                                        color: Color.fromARGB(255, 17, 14, 56),
-                                        fontSize: 28.0,
+                                    h2: TextStyle(
+                                        color: const Color.fromARGB(255, 17, 14, 56),
+                                        fontSize: ResponsiveValue(context, defaultValue: 28.0, conditionalValues: [const Condition.equals(name: "PHONE", value: 24.0)]).value,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Inter"),
-                                    h3: const TextStyle(
-                                        color: Color.fromARGB(255, 17, 14, 56),
-                                        fontSize: 25.0,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "Inter"),
-                                    h4: const TextStyle(
-                                        color: Color.fromARGB(255, 17, 14, 56),
-                                        fontSize: 22.0,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "Inter"),
-                                    codeblockDecoration: const BoxDecoration(
-                                        color: Colors.black),
+                                    h3: TextStyle(color: const Color.fromARGB(255, 17, 14, 56), fontSize: ResponsiveValue(context, defaultValue: 25.0, conditionalValues: [const Condition.equals(name: "PHONE", value: 20.0)]).value, fontWeight: FontWeight.bold, fontFamily: "Inter"),
+                                    h4: TextStyle(color: const Color.fromARGB(255, 17, 14, 56), fontSize: ResponsiveValue(context, defaultValue: 22.0, conditionalValues: [const Condition.equals(name: "PHONE", value: 18.0)]).value, fontWeight: FontWeight.bold, fontFamily: "Inter"),
+                                    codeblockDecoration: const BoxDecoration(color: Colors.black),
                                     blockSpacing: 20.0));
                           }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_blog/pages/about_page.dart';
 import 'package:portfolio_blog/pages/blog_page.dart';
 import 'package:portfolio_blog/pages/home_page.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import '../pages/projects_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,7 +16,11 @@ class CustomBottomNavigationbar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 80),
       child: Container(
-        height: 300,
+        height: ResponsiveValue(context,
+            defaultValue: 300.0,
+            conditionalValues: [
+              const Condition.smallerThan(name: "TABLET2", value: 240.0)
+            ]).value,
         width: MediaQuery.of(context).size.width * 1,
         // padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 10),
         decoration: const BoxDecoration(
@@ -83,6 +88,7 @@ class CustomBottomNavigationbar extends StatelessWidget {
             ),
             const Text(
               'Referenced by 2021 © Vonge. Template by CloudCannon.',
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.white,
@@ -131,7 +137,7 @@ class BottomTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 15, 18, 15),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: TextButton(
         onPressed: () {
           onPressed();

@@ -31,6 +31,7 @@ class DefaultContentsBox extends StatelessWidget {
           const Condition.equals(name: TABLET, value: 760.0),
           const Condition.equals(name: 'TABLET2', value: 540.0),
           const Condition.equals(name: MOBILE, value: 440.0),
+          const Condition.equals(name: "PHONE", value: 290.0),
         ]).value!,
         child: child,
       ),
