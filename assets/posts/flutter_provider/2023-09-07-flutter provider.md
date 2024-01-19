@@ -148,7 +148,7 @@ However, in real-world applications, you'll likely have multiple providers. In s
 
 # How to consume Provider
 
-1. Provider.of<T>(context)
+## 1. Provider.of<T>(context)
    
 
   ```dart
@@ -180,7 +180,7 @@ However, in real-world applications, you'll likely have multiple providers. In s
 
 &nbsp;
 
-2. using BuildContext
+## 2. using BuildContext
 
 Originally, context.watch and context.read were distinct from Provider.of, but after a certain version update, they became quite similar in terms of functionality. The choice between them now largely depends on personal preference.
 
@@ -231,7 +231,7 @@ Widget build(BuildContext context) {
 ```
 
 
-1. Consumer
+## 3. Consumer
 
 Using the Consumer widget has similar performance characteristics to Provider.of, but there are specific cases where it's a better choice.
 

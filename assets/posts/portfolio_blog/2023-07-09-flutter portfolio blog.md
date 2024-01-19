@@ -18,6 +18,49 @@ GitHub link: https://github.com/Blackcode2/portfolio_blog
 
 &nbsp;
 
+# Release Note for Flutter Portfolio Blog
+
+<!-- New, Feature, Changed, Fixed, Deprecated -->
+
+----
+#### v1.2.0
+2024.01.18
+
+**UI**  
+* Feature: add UI for phone size screen <br> Fixed: fix pixel overflow on the bottom * menu when screen is phone size 
+
+----
+#### v1.1.0
+2024.01.18
+
+**UI** 
+* Changed: adjust the responsive break points
+* Changed: smooth responsive translation
+* Changed: adjust padding for home page and mardown contents
+* Fiexed: fix pixel overflow in thumbnail card
+
+**Coding Management** 
+* Changed: delete repeated code and make it into one widget
+* Deprecated: delete unuse packages
+* Changed: chaged order of posts by recent
+
+**Markdown**
+* Feature: set the block space, codeblock highlight, and font size 
+  
+**Assets**
+* Changed: delete 'blogs' and 'projects' folders and unite them in one folder 'posts'
+----
+
+#### v1.0.0
+2023.07.30
+
+**Release**
+* New: First release of blog |
+
+----
+
+&nbsp;
+
 # Goal
 * Build Flutter web
 * Learn how to make responsive web
