@@ -14,7 +14,7 @@ Initially, I experimented with GitHub Pages and a Jekyll theme to create my port
 
 GitHub link: https://github.com/Blackcode2/portfolio_blog
 
-----
+---
 
 &nbsp;
 
@@ -22,53 +22,82 @@ GitHub link: https://github.com/Blackcode2/portfolio_blog
 
 <!-- New, Feature, Changed, Fixed, Deprecated -->
 
-----
+---
+
+#### v1.2.1
+
+2024.01.18
+
+**UI**
+
+- Fiexd: fix the typo of "Blackcode2" button on the main page
+
+**Coding Management**
+
+- Integrate the code with the responsive_framework 1.4.0
+
+---
+
 #### v1.2.0
+
 2024.01.18
 
-**UI**  
-* Feature: add UI for phone size screen <br> Fixed: fix pixel overflow on the bottom * menu when screen is phone size 
+**UI**
 
-----
+- Feature: add UI for phone size screen
+- Fixed: fix pixel overflow on the bottom \* menu when screen is phone size
+
+---
+
 #### v1.1.0
+
 2024.01.18
 
-**UI** 
-* Changed: adjust the responsive break points
-* Changed: smooth responsive translation
-* Changed: adjust padding for home page and mardown contents
-* Fiexed: fix pixel overflow in thumbnail card
+**UI**
 
-**Coding Management** 
-* Changed: delete repeated code and make it into one widget
-* Deprecated: delete unuse packages
-* Changed: chaged order of posts by recent
+- Changed: adjust the responsive break points
+- Changed: smooth responsive translation
+- Changed: adjust padding for home page and mardown contents
+- Fiexed: fix pixel overflow in thumbnail card
+
+**Coding Management**
+
+- Changed: delete repeated code and make it into one widget
+- Deprecated: delete unuse packages
+- Changed: chaged order of posts by recent
 
 **Markdown**
-* Feature: set the block space, codeblock highlight, and font size 
-  
+
+- Feature: set the block space, codeblock highlight, and font size
+
 **Assets**
-* Changed: delete 'blogs' and 'projects' folders and unite them in one folder 'posts'
-----
+
+- Changed: delete 'blogs' and 'projects' folders and unite them in one folder 'posts'
+
+---
 
 #### v1.0.0
+
 2023.07.30
 
 **Release**
-* New: First release of blog |
 
-----
+- New: First release of blog |
+
+---
 
 &nbsp;
 
 # Goal
-* Build Flutter web
-* Learn how to make responsive web
-* Host on GitHub Pages
+
+- Build Flutter web
+- Learn how to make responsive web
+- Host on GitHub Pages
 
 &nbsp;
 
 # Where did I get reference for blog?
+
 The blog that became the reference of my blog referred to vonge theme in Jekyll theme. While initially drawing inspiration from a specific theme, I envision gradually infusing my portfolio blog with a touch of creative flair as I progress.
 
 ![](assets/assets/posts/portfolio_blog/images/vonge-theme.jpg)
@@ -77,7 +106,8 @@ https://jazzed-kale.cloudvent.net/
 &nbsp;
 
 # Responsive Web
-----
+
+---
 
 One of the most challenging aspects of my project was implementing responsive web design for my blog. It was my first time venturing into this territory, and I encountered several hurdles along the way. Initially, I explored using the **LayoutBuilder** class and the **MediaQuery.of()** method to handle different screen sizes and orientations. However, I soon realized that manually creating layouts and designs for each breakpoint would be inefficient and time-consuming.
 
@@ -135,7 +165,7 @@ class MyApp extends StatelessWidget {
 This widget assigns a value that corresponds to the active breakpoint determined by the conditions specified in the conditional values. You must put **.value** method the end of the widget so that the values are vaild.
 
 ```dart
-ResponsiveValue(context, defaultValue: 520.0, 
+ResponsiveValue(context, defaultValue: 520.0,
   conditionalValues: [
     ResponsiveBreakpoints.of(context).equals(name: DESKTOP, value: ),
     ResponsiveBreakpoints.of(context).largerThan(name: MOBILE, value: ),
@@ -170,6 +200,7 @@ class HomePage extends StatelessWidget {
   }
 }
 ```
+
 Desktop:
 ![](assets/assets/posts/portfolio_blog/images/desktop.jpg)
 
@@ -194,6 +225,7 @@ ResponsiveRowColumn(
   ]
 )
 ```
+
 ```dart
 class Introduction extends StatelessWidget {
   const Introduction({super.key});
@@ -218,9 +250,11 @@ class Introduction extends StatelessWidget {
 &nbsp;
 
 ## ResponsiveRowColumnItem
+
 All the responsive widgets are wrapped by thist widget. Also, you can hide or show specific widget corresponds to th conditions
 
-* ### ResponsiveVisibility
+- ### ResponsiveVisibility
+
   This code hides Drawer widget until the screen size is smller than "DESKTOP2". In other word, Drawer is visible when the screen size is smaller then "DESKTOP2" size.
 
   ```dart
@@ -238,12 +272,14 @@ All the responsive widgets are wrapped by thist widget. Also, you can hide or sh
     ),
   ),
   ```
-This package actually contains several other useful widgets that are both convenient and surprising. Although I only covered the ones I used, I will explore this package more thoroughly and take notes when I use this package again
+
+  This package actually contains several other useful widgets that are both convenient and surprising. Although I only covered the ones I used, I will explore this package more thoroughly and take notes when I use this package again
 
 &nbsp;
 
 # Pages
-----
+
+---
 
 I have created individual page files for each page, ensuring organized structure. All the components utilized on these pages are located within the 'components' folder. Moreover, essential project fonts and images are stored in the 'assets' folder. Additionally, the 'assets' folder also houses separate folders containing posts for projects and posts, promoting efficient management and accessibility.
 
@@ -304,6 +340,7 @@ class NavigationbarButton extends StatelessWidget {
   }
 }
 ```
+
 &nbsp;
 
 The button, which redirects to another website, is implemented using the url_launcher package. It offers a straightforward integration process. To utilize it, I created a new Uri object by parsing a URI string, which was then passed as a parameter to the launchUrl function. Additionally, for asynchronous operation, the await keyword should be added before invoking the function.
@@ -355,10 +392,12 @@ class HomePage extends StatelessWidget {
       key: scaffoldKey,
       endDrawer: CustomDrawer(),
 ```
+
 ```dart
 // pass key to TopNavigationbar
 TopNavigationbar(scaffoldKey: scaffoldKey,)
 ```
+
 ```dart
 // you can open Drawer by this code
 EndDrawerButton(
@@ -449,10 +488,12 @@ class IntroWork extends StatelessWidget {
   }
 }
 ```
+
 &nbsp;
 
 ## Projects page
-----
+
+---
 
 ![](assets/assets/posts/portfolio_blog/images/projects-page.jpg)
 
@@ -468,6 +509,7 @@ This delegate creates grid layouts with a fixed number of tiles in the cross axi
 
 Example:
 ![](assets/assets/posts/portfolio_blog/images/grid-fixed.jpg)
+
 ```dart
 GridView.builder(
   itemCount: 10,
@@ -484,6 +526,7 @@ GridView.builder(
   },
 ),
 ```
+
 &nbsp;
 
 ### SliverGridDelegateWithMaxCrossAxisExtent
@@ -492,19 +535,20 @@ This delegate creates grid layouts with tiles that each have a maximum cross-axi
 
 This delegate will select a cross-axis extent for the tiles that is as large as possible subject to the following conditions:
 
-* The extent evenly divides the cross-axis extent of the grid.
-* The extent is at most maxCrossAxisExtent.
+- The extent evenly divides the cross-axis extent of the grid.
+- The extent is at most maxCrossAxisExtent.
 
 This is the description from official document.
 https://api.flutter.dev/flutter/rendering/SliverGridDelegateWithMaxCrossAxisExtent-class.html
 
 Example:
 ![](assets/assets/posts/portfolio_blog/images/grid-max.jpg)
+
 ```dart
 GridView.builder(
   itemCount: 10,
   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-    maxCrossAxisExtent: 150, 
+    maxCrossAxisExtent: 150,
     childAspectRatio: 1 / 2,
     mainAxisSpacing: 10,
     crossAxisSpacing: 10,
@@ -524,7 +568,8 @@ By using SliverGridDelegateWithMaxCrossAxisExtent, I was able to specify the max
 &nbsp;
 
 ## Markdown and Metadata
-----
+
+---
 
 During the planning phase of this web project, I decided to utilize markdown files for the posts. Thankfully, I discovered a Flutter package specifically designed for handling markdown. However, the most significant challenge I faced was twofold: firstly, how to showcase the metadata for each thumbnail card, and secondly, how to efficiently load the markdown files.
 
@@ -535,7 +580,8 @@ As a first step, I created separate folders for project and blog within the asse
 
 To tackle this issue, I discovered that implementing a solution required the utilization of the FutureBuilder widget and the AssetBundle object. By leveraging the FutureBuilder widget, I was able to asynchronously load and retrieve the file paths. Additionally, the AssetBundle object played a crucial role in accessing and managing the assets within the application.
 
-**rootBundle** refers to an instance of the **AssetBundle** class that represents the bundle of assets available to the application at runtime. The **rootBundle** is automatically created and initialized by the Flutter framework, and it allows you to load and access assets using their relative paths within the app's asset directory. 
+**rootBundle** refers to an instance of the **AssetBundle** class that represents the bundle of assets available to the application at runtime. The **rootBundle** is automatically created and initialized by the Flutter framework, and it allows you to load and access assets using their relative paths within the app's asset directory.
+
 ```dart
 rootBundle.loadString('path for file'),
 ```
@@ -728,9 +774,10 @@ class ProjectCard extends StatelessWidget {
 
 Now, when a user clicks on a card, the post page opens, seamlessly connecting the users to the desired content. The thumbnail card efficiently passes the path for the markdown file, which is then loaded using a FutureBuilder. This effective approach allows for smooth data retrieval.
 
-Once the file data is available, the flutter_markdown package effortlessly presents the post's content in a readable and user-friendly format. 
+Once the file data is available, the flutter_markdown package effortlessly presents the post's content in a readable and user-friendly format.
 
 ![](assets/assets/posts/portfolio_blog/images/post-page.jpg)
+
 ```dart
 FutureBuilder(
   future: loadAsset(fileRoot),
@@ -744,7 +791,7 @@ FutureBuilder(
         shrinkWrap: true,
         data: snapshot.data!.toString(),
       );
-  
+
     return const Center();
   }
   }),
@@ -753,7 +800,8 @@ FutureBuilder(
 &nbsp;
 
 # Web Hosting
-----
+
+---
 
 Looks like it's almost done. I've put in a tremendous effort into creating this blog, and now it's time to showcase it to the world by hosting it on the web. There are various ways to accomplish this, but after careful consideration, I've decided to host it on Github Pages. This platform not only offers the advantage of being free but also provides a high degree of freedom in managing and customizing your website.
 
@@ -792,17 +840,20 @@ Chrome (web) • chrome • web-javascript • Google Chrome 88.0.4324.150
 ```
 
 Run the following command to generate a release build
+
 ```ps
 flutter build web
 ```
+
 ```ps
 flutter build web --web-renderer html
 ```
+
 You can also include --web-renderer html or --web-renderer canvaskit to select between the HTML or CanvasKit renderers, respectively. I prefer to render in HTML because it shows better quailty of images. According to site, the difference between these two are like this.
 
-* **HTML renderer**: Uses a combination of HTML elements, CSS, Canvas elements, and SVG elements. This renderer has a smaller download size.
+- **HTML renderer**: Uses a combination of HTML elements, CSS, Canvas elements, and SVG elements. This renderer has a smaller download size.
 
-* **CanvasKit renderer**: This renderer is fully consistent with Flutter mobile and desktop, has faster performance with higher widget density, but adds about 2MB in download size.
+- **CanvasKit renderer**: This renderer is fully consistent with Flutter mobile and desktop, has faster performance with higher widget density, but adds about 2MB in download size.
 
 https://medium.com/flutter/flutter-web-support-hits-the-stable-milestone-d6b84e83b425
 
@@ -820,7 +871,7 @@ For instance, when referring to an asset file within the nested assets folder, t
 // this is noraml
 rootBundle.loadString('projects/projects_list.json'),
 // when assets folder is under anoter assets folder
-rootBundle.loadString('assets/projects/projects_list.json'), 
+rootBundle.loadString('assets/projects/projects_list.json'),
 ```
 
 Upon opening the index.html file, you will notice the following line: `<base href="/">`. To ensure proper hosting and correct page rendering, the href value in this line should be adjusted.
@@ -833,8 +884,8 @@ By making this adjustment, your web page will be hosted correctly, and users wil
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <!--
+  <head>
+    <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
 
@@ -847,12 +898,15 @@ By making this adjustment, your web page will be hosted correctly, and users wil
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="/">
+    <base href="/" />
+  </head>
+</html>
 ```
+
 ```html
-<base href="/your_repository_name/">
+<base href="/your_repository_name/" />
 <!-- example -->
-<base href="/protfolio_blog/">
+<base href="/protfolio_blog/" />
 ```
 
 After all push the project to the repository
@@ -864,7 +918,7 @@ git branch -M main
 git push -u origin main
 ```
 
-Then, go to Settings -> Pages in the repository and activate GitHub Pages. Choose Deply from a branch for Source. Choose master, /(root) for Branch and then save this setting. 
+Then, go to Settings -> Pages in the repository and activate GitHub Pages. Choose Deply from a branch for Source. Choose master, /(root) for Branch and then save this setting.
 
 ![](assets/assets/posts/portfolio_blog/images/settings-pages.jpg)
 
@@ -887,7 +941,7 @@ name: Build and deploy flutter web app
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
 
 jobs:
   build:
@@ -897,7 +951,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          channel: "stable"
       - run: flutter pub get
       - run: flutter config --enable-web
       - run: flutter build web --web-renderer html --base-href "/${{ github.event.repository.name }}/"

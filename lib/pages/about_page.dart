@@ -42,7 +42,7 @@ class AboutPage extends StatelessWidget {
                         ResponsiveValue(context,
                             defaultValue: 80.0,
                             conditionalValues: [
-                              const Condition.smallerThan(
+                              Condition.smallerThan(
                                   name: 'DESKTOP3', value: 30.0)
                             ]).value!,
                         0,
@@ -57,7 +57,7 @@ class AboutPage extends StatelessWidget {
                             width: ResponsiveValue(context,
                                 defaultValue: 440.0,
                                 conditionalValues: [
-                                  const Condition.smallerThan(
+                                  Condition.smallerThan(
                                       name: TABLET, value: 240.0)
                                 ]).value,
                             child: Column(

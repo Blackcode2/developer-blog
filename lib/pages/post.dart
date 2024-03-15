@@ -43,7 +43,7 @@ class Post extends StatelessWidget {
                         ResponsiveValue(context,
                             defaultValue: 80.0,
                             conditionalValues: [
-                              const Condition.smallerThan(
+                              Condition.smallerThan(
                                   name: 'DESKTOP3', value: 30.0)
                             ]).value!,
                         0,
@@ -58,8 +58,7 @@ class Post extends StatelessWidget {
                             width: ResponsiveValue(context,
                                 defaultValue: 800.0,
                                 conditionalValues: [
-                                  const Condition.equals(
-                                      name: TABLET, value: 760.0)
+                                  Condition.equals(name: TABLET, value: 760.0)
                                 ]).value,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -101,17 +100,15 @@ class Post extends StatelessWidget {
                                         color: const Color.fromARGB(
                                             255, 17, 14, 56),
                                         fontSize: ResponsiveValue(context,
-                                            defaultValue: 18.0,
-                                            conditionalValues: [
-                                              const Condition.equals(
-                                                  name: "PHONE", value: 14.0)
-                                            ]).value,
+                                                defaultValue: 18.0,
+                                                conditionalValues: [Condition.equals(name: "PHONE", value: 14.0)])
+                                            .value,
                                         fontFamily: "Inter"),
                                     a: TextStyle(
                                       fontSize: ResponsiveValue(context,
                                           defaultValue: 18.0,
                                           conditionalValues: [
-                                            const Condition.equals(
+                                            Condition.equals(
                                                 name: "PHONE", value: 14.0)
                                           ]).value,
                                     ),
@@ -119,18 +116,20 @@ class Post extends StatelessWidget {
                                         color: const Color.fromARGB(
                                             255, 17, 14, 56),
                                         fontSize: ResponsiveValue(context,
-                                                defaultValue: 34.0,
-                                                conditionalValues: [const Condition.equals(name: "PHONE", value: 26.0)])
-                                            .value,
+                                            defaultValue: 34.0,
+                                            conditionalValues: [
+                                              Condition.equals(
+                                                  name: "PHONE", value: 26.0)
+                                            ]).value,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Inter"),
                                     h2: TextStyle(
                                         color: const Color.fromARGB(255, 17, 14, 56),
-                                        fontSize: ResponsiveValue(context, defaultValue: 28.0, conditionalValues: [const Condition.equals(name: "PHONE", value: 24.0)]).value,
+                                        fontSize: ResponsiveValue(context, defaultValue: 28.0, conditionalValues: [Condition.equals(name: "PHONE", value: 24.0)]).value,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Inter"),
-                                    h3: TextStyle(color: const Color.fromARGB(255, 17, 14, 56), fontSize: ResponsiveValue(context, defaultValue: 25.0, conditionalValues: [const Condition.equals(name: "PHONE", value: 20.0)]).value, fontWeight: FontWeight.bold, fontFamily: "Inter"),
-                                    h4: TextStyle(color: const Color.fromARGB(255, 17, 14, 56), fontSize: ResponsiveValue(context, defaultValue: 22.0, conditionalValues: [const Condition.equals(name: "PHONE", value: 18.0)]).value, fontWeight: FontWeight.bold, fontFamily: "Inter"),
+                                    h3: TextStyle(color: const Color.fromARGB(255, 17, 14, 56), fontSize: ResponsiveValue(context, defaultValue: 25.0, conditionalValues: [Condition.equals(name: "PHONE", value: 20.0)]).value, fontWeight: FontWeight.bold, fontFamily: "Inter"),
+                                    h4: TextStyle(color: const Color.fromARGB(255, 17, 14, 56), fontSize: ResponsiveValue(context, defaultValue: 22.0, conditionalValues: [Condition.equals(name: "PHONE", value: 18.0)]).value, fontWeight: FontWeight.bold, fontFamily: "Inter"),
                                     codeblockDecoration: const BoxDecoration(color: Colors.black),
                                     blockSpacing: 20.0));
                           }

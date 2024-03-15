@@ -104,7 +104,7 @@ class ProjectCard extends StatelessWidget {
                                   fontSize: ResponsiveValue(context,
                                       defaultValue: 18.0,
                                       conditionalValues: [
-                                        const Condition.smallerThan(
+                                        Condition.smallerThan(
                                             name: 'DESKTOP2', value: 16.0),
                                       ]).value,
                                   color: Colors.white,
@@ -256,7 +256,7 @@ class BlogCard extends StatelessWidget {
                                   fontSize: ResponsiveValue(context,
                                       defaultValue: 24.0,
                                       conditionalValues: [
-                                        const Condition.equals(
+                                        Condition.equals(
                                             name: TABLET, value: 18.0)
                                       ]).value,
                                   fontWeight: FontWeight.bold,
@@ -273,7 +273,7 @@ class BlogCard extends StatelessWidget {
                                   fontSize: ResponsiveValue(context,
                                       defaultValue: 16.0,
                                       conditionalValues: [
-                                        const Condition.equals(
+                                        Condition.equals(
                                             name: TABLET, value: 14.0)
                                       ]).value,
                                   color: const Color.fromARGB(255, 17, 14, 56),

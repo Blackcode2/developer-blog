@@ -41,7 +41,7 @@ class MenuList extends StatelessWidget {
         vertical: ResponsiveValue(context,
             defaultValue: 52.0,
             conditionalValues: [
-              const Condition.smallerThan(name: 'DESKTOP3', value: 20.0)
+              Condition.smallerThan(name: 'DESKTOP3', value: 20.0)
             ]).value!,
       ),
       child: ResponsiveRowColumn(
@@ -96,6 +96,7 @@ class MenuList extends StatelessWidget {
           //     onPressed: () {
           //       Navigator.push(
           //           context, MaterialPageRoute(builder: (context) => Post()));
+          //Condition.smallerThan(name: 'DESKTOP2')
           //     },
           //   ),
           // ),
@@ -106,7 +107,9 @@ class MenuList extends StatelessWidget {
           ),
           ResponsiveRowColumnItem(
             child: ResponsiveVisibility(
-              hiddenConditions: const [Condition.smallerThan(name: 'DESKTOP2')],
+              hiddenConditions: [
+                Condition.smallerThan(name: 'DESKTOP2', value: false)
+              ],
               child: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
@@ -122,8 +125,8 @@ class MenuList extends StatelessWidget {
           ResponsiveRowColumnItem(
             child: ResponsiveVisibility(
               visible: false,
-              visibleConditions: const [
-                Condition.smallerThan(name: 'DESKTOP2')
+              visibleConditions: [
+                Condition.smallerThan(name: 'DESKTOP2', value: true)
               ],
               child: EndDrawerButton(
                 onPressed: () {
@@ -148,14 +151,14 @@ class MainLogo extends StatelessWidget {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => HomePage()));
         },
-        child: Text('Blackcde2',
+        child: Text('Blackcode2',
             style: TextStyle(
               color: const Color.fromARGB(255, 17, 14, 56),
               fontWeight: FontWeight.w800,
               fontSize: ResponsiveValue(context,
                   defaultValue: 18.0,
                   conditionalValues: [
-                    const Condition.smallerThan(name: 'DESKTOP3', value: 14.0)
+                    Condition.smallerThan(name: 'DESKTOP3', value: 14.0)
                   ]).value!,
             )));
   }
@@ -171,7 +174,7 @@ class NavigationbarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveVisibility(
-      hiddenConditions: const [Condition.smallerThan(name: 'DESKTOP2')],
+      hiddenConditions: [Condition.smallerThan(name: 'DESKTOP2', value: false)],
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: TextButton(

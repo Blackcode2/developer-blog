@@ -29,7 +29,7 @@ class Introduction extends StatelessWidget {
               width: ResponsiveValue(context,
                   defaultValue: 450.0,
                   conditionalValues: [
-                    const Condition.equals(name: TABLET, value: 370.0),
+                    Condition.equals(name: TABLET, value: 370.0),
                     Condition.equals(
                         name: 'TABLET2',
                         value: MediaQuery.of(context).size.width),
@@ -86,20 +86,20 @@ class Introduction extends StatelessWidget {
                   height: ResponsiveValue(context,
                       defaultValue: 520.0,
                       conditionalValues: [
-                        const Condition.equals(name: 'DESKTOP3', value: 420.0),
-                        const Condition.equals(name: TABLET, value: 360.0),
-                        const Condition.equals(name: "TABLET2", value: 380.0),
-                        const Condition.equals(name: MOBILE, value: 280.0),
-                        const Condition.equals(name: "PHONE", value: 200.0)
+                        Condition.equals(name: 'DESKTOP3', value: 420.0),
+                        Condition.equals(name: TABLET, value: 360.0),
+                        Condition.equals(name: "TABLET2", value: 380.0),
+                        Condition.equals(name: MOBILE, value: 280.0),
+                        Condition.equals(name: "PHONE", value: 200.0)
                       ]).value,
                   width: ResponsiveValue(context,
                       defaultValue: 480.0,
                       conditionalValues: [
-                        const Condition.equals(name: 'DESKTOP3', value: 400.0),
-                        const Condition.equals(name: TABLET, value: 340.0),
-                        const Condition.equals(name: "TABLET2", value: 540.0),
-                        const Condition.equals(name: MOBILE, value: 440.0),
-                        const Condition.equals(name: "PHONE", value: 290.0)
+                        Condition.equals(name: 'DESKTOP3', value: 400.0),
+                        Condition.equals(name: TABLET, value: 340.0),
+                        Condition.equals(name: "TABLET2", value: 540.0),
+                        Condition.equals(name: MOBILE, value: 440.0),
+                        Condition.equals(name: "PHONE", value: 290.0)
                       ]).value,
                   child: Image.asset(
                     'assets/images/profile-image.png',
@@ -159,9 +159,8 @@ class IntroWork extends StatelessWidget {
                   width: ResponsiveValue(context,
                       defaultValue: 500.0,
                       conditionalValues: [
-                        const Condition.smallerThan(
-                            name: 'DESKTOP2', value: 350.0),
-                        const Condition.equals(name: 'PHONE', value: 290.0),
+                        Condition.smallerThan(name: 'DESKTOP2', value: 350.0),
+                        Condition.equals(name: 'PHONE', value: 290.0),
                       ]).value,
                   child: BodySmallText(
                       text:
@@ -227,9 +226,8 @@ class IntroBlog extends StatelessWidget {
                   width: ResponsiveValue(context,
                       defaultValue: 500.0,
                       conditionalValues: [
-                        const Condition.smallerThan(
-                            name: 'DESKTOP2', value: 350.0),
-                        const Condition.equals(name: 'PHONE', value: 290.0),
+                        Condition.smallerThan(name: 'DESKTOP2', value: 350.0),
+                        Condition.equals(name: 'PHONE', value: 290.0),
                       ]).value,
                   child: BodySmallText(
                       text:

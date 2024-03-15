@@ -13,10 +13,10 @@ class HeadTilteText extends StatelessWidget {
       style: TextStyle(
           fontSize:
               ResponsiveValue(context, defaultValue: 58.0, conditionalValues: [
-            const Condition.equals(name: 'DESKTOP3', value: 46.0),
-            const Condition.smallerThan(name: 'DESKTOP3', value: 36.0),
-            const Condition.equals(name: MOBILE, value: 32.0),
-            const Condition.equals(name: "PHONE", value: 26.0),
+            Condition.equals(name: 'DESKTOP3', value: 46.0),
+            Condition.smallerThan(name: 'DESKTOP3', value: 36.0),
+            Condition.equals(name: MOBILE, value: 32.0),
+            Condition.equals(name: "PHONE", value: 26.0),
           ]).value,
           fontWeight: FontWeight.w900,
           color: const Color.fromARGB(255, 17, 14, 56)),
@@ -39,7 +39,7 @@ class HeadSubTilteText extends StatelessWidget {
             // const Condition.smallerThan(name: DESKTOP, value: 50.0),
             // const Condition.smallerThan(name: 'DESKTOP2', value: 36.0),
             // const Condition.smallerThan(name: 'DESKTOP3', value: 36.0),
-            const Condition.smallerThan(name: TABLET, value: 22.0),
+            Condition.smallerThan(name: TABLET, value: 22.0),
           ]).value,
           fontWeight: FontWeight.w900,
           color: const Color.fromARGB(255, 17, 14, 56)),
@@ -83,7 +83,7 @@ class BodySmallText extends StatelessWidget {
       style: TextStyle(
           fontSize:
               ResponsiveValue(context, defaultValue: 19.0, conditionalValues: [
-            const Condition.smallerThan(name: "DESKTOP3", value: 16.0),
+            Condition.smallerThan(name: "DESKTOP3", value: 16.0),
             // const Condition.smallerThan(name: TABLET, value: 16.0),
           ]).value,
           color: const Color.fromARGB(255, 17, 14, 56)),

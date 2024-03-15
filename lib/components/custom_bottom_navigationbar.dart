@@ -19,7 +19,7 @@ class CustomBottomNavigationbar extends StatelessWidget {
         height: ResponsiveValue(context,
             defaultValue: 300.0,
             conditionalValues: [
-              const Condition.smallerThan(name: "TABLET2", value: 240.0)
+              Condition.smallerThan(name: "TABLET2", value: 240.0)
             ]).value,
         width: MediaQuery.of(context).size.width * 1,
         // padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 10),

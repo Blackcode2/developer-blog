@@ -26,12 +26,12 @@ class DefaultContentsBox extends StatelessWidget {
       child: SizedBox(
         width:
             ResponsiveValue(context, defaultValue: 1200.0, conditionalValues: [
-          const Condition.equals(name: 'DESKTOP2', value: 1050.0),
-          const Condition.equals(name: 'DESKTOP3', value: 950.0),
-          const Condition.equals(name: TABLET, value: 760.0),
-          const Condition.equals(name: 'TABLET2', value: 540.0),
-          const Condition.equals(name: MOBILE, value: 440.0),
-          const Condition.equals(name: "PHONE", value: 290.0),
+          Condition.equals(name: 'DESKTOP2', value: 1050.0),
+          Condition.equals(name: 'DESKTOP3', value: 950.0),
+          Condition.equals(name: TABLET, value: 760.0),
+          Condition.equals(name: 'TABLET2', value: 540.0),
+          Condition.equals(name: MOBILE, value: 440.0),
+          Condition.equals(name: "PHONE", value: 290.0),
         ]).value!,
         child: child,
       ),
