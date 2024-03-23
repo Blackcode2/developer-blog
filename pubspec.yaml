@@ -86,6 +86,12 @@ flutter:
     - assets/posts/simple_market_app/images/
     - assets/posts/data_structure&time_complexity/
     - assets/posts/data_structure&time_complexity/images/
+    - assets/posts/singly_linked_list/
+    - assets/posts/singly_linked_list/images/
+    - assets/posts/circular_linked_list/
+    - assets/posts/circular_linked_list/images/
+    - assets/posts/doubly_linked_list/
+    - assets/posts/doubly_linked_list/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
