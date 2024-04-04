@@ -94,6 +94,8 @@ flutter:
     - assets/posts/doubly_linked_list/images/
     - assets/posts/stack/
     - assets/posts/stack/images/
+    - assets/posts/postfix/
+    - assets/posts/postfix/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
