@@ -98,6 +98,8 @@ flutter:
     - assets/posts/postfix/images/
     - assets/posts/queue/
     - assets/posts/queue/images/
+    - assets/posts/deque/
+    - assets/posts/deque/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
