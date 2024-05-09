@@ -104,6 +104,8 @@ flutter:
     - assets/posts/recursion/images/
     - assets/posts/tree/
     - assets/posts/tree/images/
+    - assets/posts/binary_tree/
+    - assets/posts/binary_tree/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
