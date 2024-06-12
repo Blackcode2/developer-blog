@@ -108,6 +108,8 @@ flutter:
     - assets/posts/binary_tree/images/
     - assets/posts/heap/
     - assets/posts/heap/images/
+    - assets/posts/graph/
+    - assets/posts/graph/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
