@@ -3,6 +3,8 @@ import 'package:portfolio_blog/components/custom_bottom_navigationbar.dart';
 import 'package:portfolio_blog/components/custom_drawer.dart';
 import 'package:portfolio_blog/components/custom_text.dart';
 import 'package:portfolio_blog/components/default_contents_box.dart';
+import 'package:portfolio_blog/provider/post_provider.dart';
+import 'package:provider/provider.dart';
 import '../components/top_navigationbar.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter/services.dart';
@@ -18,10 +20,6 @@ class ProjectsPage extends StatelessWidget {
 
   String description =
       'I show only my best works built completely with passion, simplicity, and creativity!';
-
-  Future<String> loadAsset(String path) async {
-    return await rootBundle.loadString(path);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,47 +98,31 @@ class ProjectCardGridView extends StatelessWidget {
 
   late bool isHome;
   int fileCount = 0;
-  List jsonList = [];
-  late Map<String, dynamic> jsonData;
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: rootBundle.loadString('assets/posts/projects_list.json'),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (snapshot.hasData) {
-          jsonData = jsonDecode(snapshot.data!);
-          jsonData.forEach((key, value) {
-            jsonList.add([key, value]);
-            // jsonList[n][0] is project folder name
-            // jsonList[n][1] is markdown file name
+    PostProvider postProvider = context.watch<PostProvider>();
+    fileCount = postProvider.projectList.length;
+    if (postProvider.projectList.length != 0) {
+      if (fileCount < 6) {
+        isHome = false;
+      }
+      return GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 480,
+            mainAxisSpacing: 14,
+            crossAxisSpacing: 14,
+            childAspectRatio: 3.8 / 4,
+          ),
+          itemCount: isHome ? 6 : fileCount,
+          itemBuilder: (context, index) {
+            return ProjectCard(folderName: postProvider.projectList[index]);
           });
-
-          fileCount = jsonData.length;
-          if (fileCount < 6) {
-            isHome = false;
-          }
-          return GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 480,
-                mainAxisSpacing: 14,
-                crossAxisSpacing: 14,
-                childAspectRatio: 3.8 / 4,
-              ),
-              itemCount: isHome ? 6 : fileCount,
-              itemBuilder: (context, index) {
-                return ProjectCard(dataList: jsonList[index]);
-              });
-        }
-        return const Center(
-          child: Text('Can not laod data'),
-        );
-      },
-    );
+    } else {
+      return Center(
+        child: CircularProgressIndicator(),
+      );
+    }
   }
 }

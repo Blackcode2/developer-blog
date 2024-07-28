@@ -24,6 +24,21 @@ GitHub link: https://github.com/Blackcode2/portfolio_blog
 
 ---
 
+#### v1.3.1
+
+2024.01.18
+
+**UI**
+
+- New: tag buttons on the blog page
+
+**Coding Management**
+
+- Add provider package to load posts efficently
+- It loads only one time the posts data.
+
+---
+
 #### v1.2.1
 
 2024.01.18

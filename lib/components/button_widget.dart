@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_blog/provider/post_provider.dart';
+import 'package:provider/provider.dart';
 
 class ButtonWidget extends StatelessWidget {
   ButtonWidget(
@@ -39,5 +41,50 @@ class ButtonWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class TagButton extends StatefulWidget {
+  TagButton({required this.text, super.key});
+  late String text;
+
+  @override
+  State<TagButton> createState() => _TagButtonState();
+}
+
+class _TagButtonState extends State<TagButton> {
+  bool isPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    PostProvider postProvider = context.read<PostProvider>();
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          splashFactory: NoSplash.splashFactory,
+          backgroundColor: isPressed
+              ? Color.fromARGB(220, 0, 3, 104)
+              : Color.fromARGB(223, 20, 150, 167),
+          foregroundColor: Colors.white,
+        ),
+        onPressed: () {
+          setState(() {
+            if (isPressed) {
+              print(widget.text);
+              isPressed = false;
+              postProvider.selectedTags.remove(widget.text);
+              postProvider.removeSelectedTagsMap(widget.text);
+              postProvider.decreaseTagButtonCount();
+            } else {
+              isPressed = true;
+              postProvider.selectedTags.add(widget.text);
+              postProvider.addSelectedTagsMap();
+              postProvider.increaseTagButtonCount();
+            }
+          });
+        },
+        child: Text(
+          widget.text,
+          style: TextStyle(fontSize: 12),
+        ));
   }
 }

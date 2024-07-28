@@ -1,0 +1,34 @@
+{
+  "blog_list": [
+    "binary_search_tree",
+    "search",
+    "graph",
+    "heap",
+    "binary_tree",
+    "tree",
+    "recursion",
+    "deque",
+    "queue",
+    "postfix",
+    "stack",
+    "doubly_linked_list",
+    "circular_linked_list",
+    "singly_linked_list",
+    "data_structure&time_complexity",
+    "simple_market_app",
+    "simple_movie_app",
+    "flutter_provider",
+    "flutter_async",
+    "simple_weather_app",
+    "flutter_state",
+    "portfolio_blog",
+    "dart_CRUD"
+  ],
+  "project_list": [
+    "simple_market_app",
+    "simple_movie_app",
+    "simple_weather_app",
+    "portfolio_blog",
+    "dart_CRUD"
+  ]
+}

@@ -6,17 +6,14 @@ import 'dart:convert';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class ProjectCard extends StatelessWidget {
-  ProjectCard({required this.dataList, super.key});
+  ProjectCard({required this.folderName, super.key});
 
-  late List dataList;
-  // dataList[0] is project folder name
-  // dataList[1] is markdown file name
+  late String folderName;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future:
-          rootBundle.loadString("assets/posts/${dataList[0]}/metadata.json"),
+      future: rootBundle.loadString("assets/posts/${folderName}/metadata.json"),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Card(
@@ -37,8 +34,7 @@ class ProjectCard extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => Post(
-                              fileRoot:
-                                  "assets/posts/${dataList[0]}/${dataList[1]}",
+                              fileRoot: "assets/posts/${folderName}/post.md",
                               metaData: jsonData,
                             )));
               },
@@ -60,7 +56,7 @@ class ProjectCard extends StatelessWidget {
                     // ),
                     image: DecorationImage(
                         image: AssetImage(
-                            "assets/posts/${dataList[0]}/images/${jsonData["image"]}"),
+                            "assets/posts/${folderName}/images/${jsonData["image"]}"),
                         fit: BoxFit.cover,
                         alignment: Alignment.topCenter),
                   ),
@@ -129,17 +125,14 @@ class ProjectCard extends StatelessWidget {
 }
 
 class BlogCard extends StatelessWidget {
-  BlogCard({required this.dataList, super.key});
+  BlogCard({required this.folderName, super.key});
 
-  late List dataList;
-  // dataList[0] is project folder name
-  // dataList[1] is markdown file name
+  late String folderName;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future:
-          rootBundle.loadString("assets/posts/${dataList[0]}/metadata.json"),
+      future: rootBundle.loadString("assets/posts/${folderName}/metadata.json"),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Card(
@@ -160,8 +153,7 @@ class BlogCard extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => Post(
-                              fileRoot:
-                                  "assets/posts/${dataList[0]}/${dataList[1]}",
+                              fileRoot: "assets/posts/${folderName}/post.md",
                               metaData: jsonData,
                             )));
               },
@@ -178,7 +170,7 @@ class BlogCard extends StatelessWidget {
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height * 0.3,
                         child: Image.asset(
-                          "assets/posts/${dataList[0]}/images/${jsonData["image"]}",
+                          "assets/posts/${folderName}/images/${jsonData["image"]}",
                           fit: BoxFit.fill,
                         ),
                       ),
