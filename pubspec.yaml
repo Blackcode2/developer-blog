@@ -115,6 +115,8 @@ flutter:
     - assets/posts/search/images/
     - assets/posts/binary_search_tree/
     - assets/posts/binary_search_tree/images/
+    - assets/posts/publishing_app/
+    - assets/posts/publishing_app/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

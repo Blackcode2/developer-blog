@@ -1,5 +1,6 @@
 {
   "blog_list": [
+    "publishing_app",
     "binary_search_tree",
     "search",
     "graph",
@@ -25,6 +26,7 @@
     "dart_CRUD"
   ],
   "project_list": [
+    "publishing_app",
     "simple_market_app",
     "simple_movie_app",
     "simple_weather_app",

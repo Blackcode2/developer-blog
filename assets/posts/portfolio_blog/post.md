@@ -26,7 +26,7 @@ GitHub link: https://github.com/Blackcode2/portfolio_blog
 
 #### v1.3.1
 
-2024.01.18
+2024.07.28
 
 **UI**
 
