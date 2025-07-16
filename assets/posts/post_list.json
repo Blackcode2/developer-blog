@@ -26,6 +26,7 @@
     "dart_CRUD"
   ],
   "project_list": [
+    "catchball",
     "publishing_app",
     "simple_market_app",
     "simple_movie_app",
